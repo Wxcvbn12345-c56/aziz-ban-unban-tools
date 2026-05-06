@@ -1,0 +1,471 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>BAN | UNBAN🌐· LORD AZIZ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0b1a2f;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            background-image: radial-gradient(circle at 30% 40%, rgba(18, 40, 70, 0.5) 0%, transparent 50%);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @keyframes intenseGlow {
+            0% { text-shadow: 0 0 5px #2ecc71, 0 0 10px #2ecc71; opacity: 0.9; }
+            50% { text-shadow: 0 0 20px #2ecc71, 0 0 35px #3498db, 0 0 50px #2ecc71; opacity: 1; }
+            100% { text-shadow: 0 0 5px #2ecc71, 0 0 10px #2ecc71; opacity: 0.9; }
+        }
+
+        @keyframes borderPulse {
+            0% { border-color: rgba(46, 204, 113, 0.4); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.2); }
+            50% { border-color: rgba(46, 204, 113, 1); box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.6), 0 0 25px rgba(46, 204, 113, 0.5); }
+            100% { border-color: rgba(46, 204, 113, 0.4); box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.2); }
+        }
+
+        .top-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #07121f, #0a1a2a);
+            border-bottom: 2px solid #2ecc71;
+            padding: 20px 0 14px 0;
+            z-index: 1000;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(46, 204, 113, 0.3);
+        }
+
+        .header-inner {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 0 24px;
+        }
+
+        .site-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #ffffff, #b0e0ff, #88aaff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: intenseGlow 2s infinite;
+        }
+
+        .site-title span {
+            font-size: 1.9rem;
+            display: inline-block;
+        }
+
+        .server-badge {
+            background: #0e1f2e;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            font-family: monospace;
+            color: #b8e2ff;
+            border: 1px solid #2ecc71;
+            box-shadow: 0 0 10px #2ecc71;
+            animation: borderPulse 2s infinite;
+        }
+
+        @media (max-width: 550px) {
+            .header-inner { padding: 0 16px; }
+            .site-title { font-size: 1.3rem; }
+            .server-badge { font-size: 0.7rem; padding: 5px 12px; }
+        }
+
+        .main-wrapper {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+            margin-top: 110px;
+        }
+
+        .bg-animated {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            animation: bgPulse 6s infinite;
+        }
+        .bg-circle:nth-child(1) { width: 300px; height: 300px; background: #2ecc71; top: -80px; left: -60px; }
+        .bg-circle:nth-child(2) { width: 250px; height: 250px; background: #3498db; bottom: -70px; right: -50px; animation-delay: 1.5s; }
+        .bg-circle:nth-child(3) { width: 180px; height: 180px; background: #2ecc71; top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: 3s; }
+
+        @keyframes bgPulse {
+            0%, 100% { transform: scale(1); opacity: 0.05; }
+            50% { transform: scale(1.2); opacity: 0.1; }
+        }
+
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: floatUp 8s infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) scale(2.5); opacity: 0; }
+        }
+
+        .app-screen {
+            width: 100%;
+            background: #0d1f35;
+            border-radius: 40px;
+            padding: 40px 28px 44px;
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(4px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+            border: 1px solid rgba(24, 50, 80, 0.7);
+            position: relative;
+            z-index: 2;
+            animation: borderPulse 2s infinite;
+        }
+
+        .greeting-container { text-align: center; }
+
+        .main-title {
+            font-size: clamp(1.8rem, 10vw, 2.8rem);
+            font-weight: 600;
+            color: #eef5ff;
+            text-transform: uppercase;
+        }
+        .main-title .highlight {
+            display: inline-block;
+            animation: intenseGlow 2s infinite;
+        }
+        .main-title .highlight:first-child { color: #2ecc71; }
+        .main-title .highlight:last-child { color: #3498db; animation-delay: 0.5s; }
+
+        .sub-title {
+            font-size: 1rem;
+            letter-spacing: 0.2em;
+            color: #aac8e4;
+            text-transform: uppercase;
+            animation: intenseGlow 3s infinite;
+        }
+
+        .form-container { width: 100%; display: flex; flex-direction: column; gap: 14px; }
+        .input-label, .select-label { font-size: 0.8rem; color: #7a9bbd; padding-left: 10px; }
+
+        .input-field, .select-field {
+            width: 100%;
+            background: #0f2340;
+            border: 1.5px solid rgba(46, 204, 113, 0.5);
+            border-radius: 18px;
+            padding: 15px 18px;
+            color: #e8f0fa;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+        .input-field:focus, .select-field:focus {
+            border-color: #2ecc71;
+            box-shadow: 0 0 20px #2ecc71;
+        }
+
+        .send-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #1a3a58, #0f2340);
+            border: 1px solid #2ecc71;
+            border-radius: 30px;
+            padding: 14px;
+            color: #e0ecf8;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+            animation: borderPulse 2s infinite;
+        }
+        .send-btn:hover {
+            background: #1e4265;
+            transform: scale(1.01);
+            box-shadow: 0 0 25px #2ecc71;
+        }
+
+        .method-buttons-row { display: flex; gap: 12px; width: 100%; }
+        .method-btn {
+            flex: 1;
+            background: #0f2340;
+            border: 1px solid #2ecc71;
+            border-radius: 22px;
+            padding: 12px 8px;
+            color: #b2cbe4;
+            cursor: pointer;
+            text-align: center;
+            transition: 0.2s;
+        }
+        .method-btn:hover {
+            background: #162e4a;
+            box-shadow: 0 0 15px #2ecc71;
+            transform: scale(1.02);
+        }
+
+        .separator { width: 70px; height: 2px; background: linear-gradient(90deg, transparent, #2ecc71, #3498db, transparent); margin: 10px 0; }
+
+        .footer-note {
+            font-size: 0.7rem;
+            text-align: center;
+            margin-top: 15px;
+            color: #aaffdd;
+            text-shadow: 0 0 8px #2ecc71, 0 0 5px #2ecc71;
+            animation: intenseGlow 2s infinite;
+            letter-spacing: 1px;
+        }
+
+        .hidden { display: none; }
+
+        .floating-social-btn {
+            position: fixed;
+            bottom: 90px;
+            right: 25px;
+            width: 48px;
+            height: 48px;
+            background: #0f1a2a;
+            border: 2px solid #2ecc71;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            animation: borderPulse 1.5s infinite;
+        }
+
+        .social-popup {
+            position: fixed;
+            bottom: 150px;
+            right: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            z-index: 99;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+            transition: 0.3s;
+        }
+        .social-popup.active { opacity: 1; pointer-events: all; transform: translateY(0); }
+        .social-icon-popup {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background: #0f1a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #2ecc71;
+            transition: 0.2s;
+        }
+        .social-icon-popup svg { width: 22px; height: 22px; }
+        .social-icon-popup.whatsapp svg { fill: #25D366; }
+        .social-icon-popup.telegram svg { fill: #2AABEE; }
+        .social-icon-popup.owner svg { fill: #2ecc71; }
+    </style>
+</head>
+<body>
+
+    <div class="top-header">
+        <div class="header-inner">
+            <div class="site-title">
+                <span>⚡</span> AZIZ TECH 🌐
+            </div>
+            <div class="server-badge">
+                server · v5.0
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-animated">
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+        <div class="bg-circle"></div>
+    </div>
+    <div class="bg-particles" id="bgParticles"></div>
+
+    <div class="main-wrapper">
+        <div class="app-screen">
+            <div class="greeting-container">
+                <h1 class="main-title"><span class="highlight">BAN</span> | <span class="highlight">UNBAN</span></h1>
+                <span class="sub-title">SUPPORT</span>
+            </div>
+
+            <div class="form-container">
+                <label class="input-label">Numéro de téléphone</label>
+                <input type="tel" id="phoneInput" class="input-field" placeholder="Entrez votre numéro" inputmode="tel">
+
+                <label class="select-label">Sélectionner le motif</label>
+                <select id="banType" class="select-field">
+                    <option value="" disabled selected>Choisir motif...</option>
+                    <option value="ban">BAN</option>
+                    <option value="unban">UNBAN</option>
+                </select>
+            </div>
+
+            <button class="send-btn" id="sendBtn">Envoyer</button>
+
+            <div class="method-buttons-row hidden" id="methodButtonsRow">
+                <button class="method-btn" id="mailMethod">📧 Mail Signalement</button>
+                <button class="method-btn" id="whatsappMethod">💬 WhatsApp</button>
+            </div>
+
+            <div class="separator"></div>
+        </div>
+        <p class="footer-note">⚠️ Only for educational purpose. You are responsible for your own risks. </p>
+    </div>
+
+    <div class="floating-social-btn" id="floatingSocialBtn">
+        <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+        </svg>
+    </div>
+    <div class="social-popup" id="socialPopup">
+        <a href="https://whatsapp.com/channel/0029VbBidXg6BIEm6AM3FA0K" target="_blank" class="social-icon-popup whatsapp">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+        </a>
+        <a href="https://t.me/xizlegion" target="_blank" class="social-icon-popup telegram">
+            <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.46-1.901-.903-1.056-.692-1.653-1.123-2.678-1.799-1.185-.781-.417-1.21.258-1.911.177-.184 3.247-2.977 3.307-3.23.007-.032.015-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.139-5.062 3.345-.479.329-.913.489-1.302.481-.428-.009-1.252-.242-1.865-.441-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.015 3.333-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.14.121.098.154.229.17.33.016.103.036.335.02.518z"/></svg>
+        </a>
+        <a href="https://t.me/LORD_X_AZIZ" target="_blank" class="social-icon-popup owner">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zM8.5 12c0-.5.1-1 .3-1.5h6.4c.2.5.3 1 .3 1.5s-.1 1-.3 1.5H8.8c-.2-.5-.3-1-.3-1.5z"/></svg>
+        </a>
+    </div>
+
+    <script>
+        // Emails réels de support WhatsApp / Meta / signalement
+        const realSupportEmails = [
+            'abuse@whatsapp.com',
+            'support@whatsapp.com',
+            'security@whatsapp.com',
+            'legal@whatsapp.com',
+            'dmca@whatsapp.com',
+            'privacy@whatsapp.com',
+            'integrity@whatsapp.com',
+            'trustandsafety@whatsapp.com',
+            'report@whatsapp.com',
+            'emergency@whatsapp.com',
+            'terrorism@whatsapp.com',
+            'childsafety@whatsapp.com',
+            'abuse@fb.com',
+            'security@facebookmail.com',
+            'phish@fb.com',
+            'integrity@fb.com',
+            'support@facebook.com',
+            'appeals@fb.com',
+            'datarequests@fb.com',
+            'eu@fb.com',
+            'dpo@fb.com',
+            'press@meta.com',
+            'legal@meta.com',
+            'security@meta.com',
+            'abuse@meta.com',
+            'privacy@meta.com'
+        ];
+
+        function generateRandomIP() {
+            return `${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`;
+        }
+
+        function getCurrentDateTime() {
+            const now = new Date();
+            return now.toLocaleString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+        }
+
+        function getBanMessage(phone, ip, dateTime) {
+            return `Bonjour à l’équipe Support WhatsApp,
+
+Je m’appelle lord aziz et je vous écris aujourd’hui car je suis victime de harcèlement sérieux de la part d’un utilisateur. Je vous demande de bien vouloir traiter ce signalement avec la plus grande attention et le plus grand sérieux possible.
+
+Numéro concerné : ${phone}
+Adresse IP du signalement : ${ip}
+Date et heure du signalement : ${dateTime}
+
+Cet utilisateur m’a envoyé des messages extrêmement graves qui m’ont choqué et inquiété. Voici précisément ce qu’il a fait :
+
+Menaces de mort et incitation à la violence
+
+Il m’a directement menacé en écrivant des phrases comme « je vous exécuterai », « ☠️ », et « préparez-vous à vous retrouver sur le territoire ». Il incite aussi les autres personnes à participer à une sorte de « chasse » en promettant une grosse récompense et en demandant d’« enfermer » quelqu’un immédiatement. Ce sont des menaces claires et très dangereuses.
+
+Diffusion de contenus gore et choquants
+
+Il a envoyé plusieurs liens vers des images violentes et très dures (gore), notamment des photos montrant des accidents sanglants et des corps mutilés. Les liens sont :
+
+https://b.top4top.io/p_34506x4lg3.jpeg
+https://ibb.co/gLpqZZqw
+https://xgore.net/the-upper-half-of-the-man-was-crushed-by-the-accident/
+
+Ce genre de contenu est traumatisant et n’a pas sa place sur WhatsApp.
+
+Usurpation d’identité et manipulation
+
+Il utilise le nom de Mark Zuckerberg de façon complètement fausse pour inventer une histoire dangereuse et inciter les gens à la violence. Tout ça semble être une façon de semer la panique et de harceler les utilisateurs.
+
+Ces messages m’ont mis mal à l’aise et représentent un vrai risque pour ma sécurité et celle des autres utilisateurs. Ce comportement est très grave : menaces de mort, contenus violents extrêmes, et manipulation. Cela va totalement contre les règles de WhatsApp et peut causer beaucoup de tort, surtout si cette personne continue à contacter d’autres gens.
+
+Je joins à ce mail les captures d’écran complètes des messages qu’il m’a envoyés comme preuves.
+
+Je vous remercie sincèrement de prendre le temps d’examiner ce cas avec attention et de prendre les mesures qui s’imposent : suspension ou suppression définitive de ce compte afin qu’il ne puisse plus harceler qui que ce soit. Je compte vraiment sur votre intervention rapide pour me protéger et protéger les autres utilisateurs.
+
+Je reste disponible pour vous fournir n’importe quelle information ou preuve supplémentaire dont vous auriez besoin.
+
+Merci beaucoup pour votre aide et votre compréhension.`;
+        }
+
+        function getUnbanMessage(phone, ip, dateTime) {
+            return `Bonjour à l’équipe Support WhatsApp,
+
+Je m’appelle lord aziz et je vous écris suite à la suspension de mon compte WhatsApp. Je respecte votre décision, mais je souhaite vous expliquer la situation en toute sincérité afin que vous puissiez réexaminer mon cas.
+
+Numéro concerné : ${phone}
+Adresse IP utilisée : ${ip}
+Date et heure de la demande : ${dateTime}
+
+Mon compte a été bloqué car j’ai utilisé un téléphone routeur (proxy/VPN) sans savoir que cela était interdit. Je ne connaissais pas bien les règles à ce sujet et je ne me rendais pas compte que cela pouvait être détecté par votre système comme une violation. Je l’ai fait de bonne foi, sans aucune intention de contourner vos règles ou de faire quoi que ce soit de mal.
+
+Dès que j’ai compris que mon compte avait été suspendu à cause de cela, j’ai immédiatement arrêté d’utiliser ce routeur. Je suis conscient maintenant que cela va contre les conditions d’utilisation de WhatsApp. Je m’engage à ne plus jamais utiliser de proxy, VPN, routeur ou tout autre outil qui pourrait modifier mon adresse IP ou mon comportement sur la plateforme.
+
+J’utilise WhatsApp principalement pour communiquer avec ma famille, mes amis et pour mes besoins quotidiens. Cette suspension me cause beaucoup de difficultés et je regrette sincèrement d’avoir enfreint les règles, mê

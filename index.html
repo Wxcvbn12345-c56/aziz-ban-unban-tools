@@ -517,7 +517,7 @@ Cordialement,`;
             if (!phone) { shake(phoneInput); return; }
             if (!type) { shake(banTypeSelect); return; }
             const msg = `Bonjour, je souhaite faire une demande de support pour un ${type === 'ban' ? 'signalement bannissement' : 'déblocage unban'}.%0A%0ANuméro : ${phone}%0A%0AMerci de bien vouloir examiner ma situation.`;
-            window.open(`https://wa.me/22123456789?text=${msg}`, '_blank');
+            window.open(`https://wa.me/support/?text=${msg}`, '_blank');
         };
 
         mailBtn.onclick = () => {
